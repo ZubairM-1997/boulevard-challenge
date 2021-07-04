@@ -1,62 +1,88 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+## Boulevard Online Code Challenge
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+This project was completed with Laravel, PHP Unit and MySQL.
 
-## About Laravel
+## Brief
+Create a Laravel application and write a solution to import the given product data ( products.csv ) into
+its database. You'll need to write migrations with a sensible database structure along with the importer. No
+front end is required.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+How the file is provided to the application is up to you. For example, you could write an artisan command
+for it or create a very basic file uploader.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Things we might be looking for:
+Usage of composer / community packages
+Migrations / database design
+Logging of errors
+Ability to handle empty, malformed, or extremely large files
+Potential to accept different file formats, i.e JSON or XML
+Documentation
+Validation
+Testing
+OOP / SOLID principles
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Ideas for talking about your work:
+Quick demo
+Show us your planning, even if it's a few scribbles on a post it note.
+How you might test it
+Any problems you faced
+Future improvements
 
-## Learning Laravel
+## Getting started with the project
+1) fork this repository then clone it to your local
+2) go to the .env file and ensure the correct database connection configuration is set up
+3) Run the migrations with this command 'php artisan migrate'
+4) Start the server with this command 'php artisan server start'
+5) Server should start on the relevant port, depending on your configuration, for me it was http://127.0.0.1:8001/
+6) To run the tests, enter the command 'php artisan test'
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## Database design
+This was a simple dataset, so only one table called Products was needed in the database
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## Error Handling
+I thought about what if the user uploaded incorrect file formats, the appropriate response would be a 406 response if that event did occur, as those actions should not be allowed. Then, the appropriate views are sent back to the user, showing what they did wrong.
 
-## Laravel Sponsors
+## Testing
+For testing, I used PHPUnit, as it was inbuilt with Laravel, simple to use, lightweight.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+![](demo.gif)
 
-### Premium Partners
+## Challenges
+For me, this was the first time I had used Laravel, so the first challenge was setting up and ensuring the project was connected to the database was something I was stuck on for a couple of hours. However, the layout of the controllers seemed very similar to what I experienced with Ruby on Rails, so understanding how it operated was not too much of a struggle.
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
+Another challenge I faced was I kept on getting this error when I ran the tests
+`/usr/bin/php declares an invalid value for PHP_VERSION
+This breaks fundamental functionality such as version_compare()
+Please use a different PHP interpreter`
 
-## Contributing
+Seemed like the version of PHP I was using at the time was not compatible with the version of PHPUnit for this project, how I resolved this was to upgrade my PHP version locally by entering the commmand 'brew upgrade php', if you come across this issue, make sure you have the latest version of homebrew installed.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## Tests
+There are 4 test cases
+1) Checking if there is no file submitted in the form
+2) Checking if there is a csv file submitted but it has incorrect formatting
+3) Checking if an incorrect file type is submitted (jpeg, pdf, etc)
+4) Checking if the import page is rendered correctly
 
-## Code of Conduct
+## Thoughts on Improvements
+These are things that I could have improved on given I had enough time, I thought of these from a UX/UI and functionality perspective
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+1) Including a positive test case to check if csv file with correct formatting is submitted
+2) JavaScript form validation that shows a pop up on the browser that tells user to import a file before submitting it
+3) CSS to make the project look more appealing to the eye
+4) More validation to accept xml and json documents with correct formatting in the controller, currently it only accepts products.csv, ideally the code can be reformatted to accept products.json or products.xml, the more flexible the better
 
-## Security Vulnerabilities
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
 
-## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+
+
+
+
+
+
+
+
+
+
