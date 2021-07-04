@@ -31,10 +31,11 @@ Future improvements
 ## Getting started with the project
 1) fork this repository then clone it to your local
 2) go to the .env file and ensure the correct database connection configuration is set up
-3) Run the migrations with this command 'php artisan migrate'
-4) Start the server with this command 'php artisan server start'
-5) Server should start on the relevant port, depending on your configuration, for me it was http://127.0.0.1:8001/
-6) To run the tests, enter the command 'php artisan test'
+3) Install the dependancies by entering the command 'composer install'
+4) Run the migrations with this command 'php artisan migrate'
+5) Start the server with this command 'php artisan server start'
+6) Server should start on the relevant port, depending on your configuration, for me it was http://127.0.0.1:8001/
+7) To run the tests, enter the command 'php artisan test'
 
 ## Database design
 This was a simple dataset, so only one table called Products was needed in the database
@@ -71,6 +72,7 @@ These are things that I could have improved on given I had enough time, I though
 2) JavaScript form validation that shows a pop up on the browser that tells user to import a file before submitting it
 3) CSS to make the project look more appealing to the eye
 4) More validation to accept xml and json documents with correct formatting in the controller, currently it only accepts products.csv, ideally the code can be reformatted to accept products.json or products.xml, the more flexible the better
+5) Integrating Maatwebsite library somehow, watched a couple tutorials, seemed like the library added more functionality when dealing with csv imports, seemed pretty cool.
 
 
 
