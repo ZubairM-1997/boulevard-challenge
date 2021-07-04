@@ -33,7 +33,7 @@ Future improvements
 2) go to the .env file and ensure the correct database connection configuration is set up
 3) Install the dependancies by entering the command 'composer install'
 4) Run the migrations with this command 'php artisan migrate'
-5) Start the server with this command 'php artisan server start'
+5) Start the server with this command 'php artisan serve'
 6) Server should start on the relevant port, depending on your configuration, for me it was http://127.0.0.1:8001/
 7) To run the tests, enter the command 'php artisan test'
 
